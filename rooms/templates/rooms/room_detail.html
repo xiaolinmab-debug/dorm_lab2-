@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Детали комнаты {{ room.number }}</title>
+    <style>body { font-family: sans-serif; margin: 20px; }</style>
+</head>
+<body>
+    <h1>Комната: {{ room.number }}</h1>
+    <p>Вместимость: {{ room.capacity }}</p>
+    <h3>Студенты в комнате:</h3>
+    <ul>
+        {% for student in room.student_set.all %}
+            <li>{{ student.name }}</li>
+        {% empty %}
+            <li>Студентов пока нет</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'room-update' room.pk %}">Изменить</a> |
+    <a href="{% url 'room-delete' room.pk %}">Удалить</a> |
+    <a href="{% url 'room-list' %}">Назад</a>
+</body>
+</html>

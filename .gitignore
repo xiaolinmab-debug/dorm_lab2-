@@ -1,0 +1,27 @@
+﻿# Python / Django
+__pycache__/
+*.py[cod]
+*.pyc
+
+# 虚拟环境
+venv/
+.env/
+
+# 本地数据库
+db.sqlite3
+local_settings.py
+
+# 日志与静态文件
+*.log
+staticfiles/
+media/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# 测试覆盖
+.coverage
+htmlcov/
+.pytest_cache/

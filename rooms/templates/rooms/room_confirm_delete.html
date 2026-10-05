@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Удалить комнату</title>
+    <style>body { font-family: sans-serif; margin: 20px; }</style>
+</head>
+<body>
+    <h1>Удалить комнату {{ room.number }}?</h1>
+    <p>Вы уверены? Это действие нельзя отменить.</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="color:white; background:red; border:none; padding:5px 10px;">Удалить</button>
+    </form>
+    <a href="{% url 'room-list' %}">Отмена</a>
+</body>
+</html>

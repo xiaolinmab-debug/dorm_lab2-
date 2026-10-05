@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список студентов</title>
+    <style>body { font-family: sans-serif; margin: 20px; } table { border-collapse: collapse; width: 80%; } th, td { border: 1px solid #ccc; padding: 8px; }</style>
+</head>
+<body>
+    <h1>Список студентов</h1>
+    <a href="{% url 'student-create' %}">+ Добавить студента</a>
+    <table style="margin-top: 15px;">
+        <tr>
+            <th>Имя</th>
+            <th>Комната</th>
+            <th>Действия</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.room.number|default:"Не назначена" }}</td>
+            <td>
+                <a href="{% url 'student-update' student.pk %}">Изменить</a> |
+                <a href="{% url 'student-assign' student.pk %}">Назначить комнату</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">Студентов пока нет</td></tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <a href="{% url 'room-list' %}">Список комнат</a>
+</body>
+</html>

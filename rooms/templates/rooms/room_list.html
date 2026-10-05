@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список комнат</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 80%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        a { text-decoration: none; color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>Список комнат</h1>
+    <a href="{% url 'room-create' %}">+ Создать комнату</a>
+    <table style="margin-top: 15px;">
+        <tr>
+            <th>ID</th>
+            <th>Номер</th>
+            <th>Вместимость</th>
+            <th>Действия</th>
+        </tr>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.id }}</td>
+            <td>{{ room.number }}</td>
+            <td>{{ room.capacity }}</td>
+            <td>
+                <a href="{% url 'room-detail' room.pk %}">Детали</a> |
+                <a href="{% url 'room-update' room.pk %}">Изменить</a> |
+                <a href="{% url 'room-delete' room.pk %}">Удалить</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Комнат пока нет.</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <a href="{% url 'student-list' %}">Список студентов</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Назначить комнату: {{ student.name }}</title>
+    <style>body { font-family: sans-serif; margin: 20px; } form div { margin-bottom: 10px; }</style>
+</head>
+<body>
+    <h1>Назначить комнату для: {{ student.name }}</h1>
+    <p>Текущая комната: {{ student.room.number|default:"Не назначена" }}</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Назначить</button>
+    </form>
+    <a href="{% url 'student-list' %}">Назад</a>
+</body>
+</html>
